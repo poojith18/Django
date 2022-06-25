@@ -6,11 +6,18 @@ django-admin startproject firstproject
 
 python manage.py startapp testapp
 
-3)add this application to the project in settings.py file
+3)add this application to the project in settings.py file to INSTALLED_APPS
+
+'testapp'
 
 4)define view function inside views.py
 
+def hello_world_view(request):
+    return HttpResponse('<h1> Hello World </h1>')
+
 5)define URL pattern for our view function inside urls.py
+
+path('hello/', views.hello_world_view)
 
 6)runserver
 
