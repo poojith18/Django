@@ -73,6 +73,39 @@ to search for that project related urls in urls.py for copying  --> Maintainenan
 so we have to define url patterns at application level instead of project level. we can do this by creating a seperate 
 urls.py file at application level and link it to project level (urls.py).
 
+urls.py  at appication level
+
+urlpatterns = [
+    path('first/', views.first_view),
+    path('second/', views.second_view),
+    path('third/', views.third_view),
+    path('fourth/', views.fourth_view),
+    path('fifth/', views.fifth_view),
+]
+
+linnking to urls.py  at project level
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('testapp/', include(urls)),
+]
+
+and send request by using http://127.0.0.1:8000/testapp/first/
+
+Advantages:
+1) It promotes reusability of applications
+2) Project level urls.py is clean and more readable.
+
+So far projects we discussed:
+1) Hello World
+2) to display date and time
+3) single application with multiple views
+4) single project with multiple applications
+5) How to define url patterns at application level
+
+ 
+
+
 
 
 
