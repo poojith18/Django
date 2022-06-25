@@ -1,0 +1,21 @@
+1)start project
+
+django-admin startproject firstproject
+
+2)start application
+
+python manage.py startapp testapp
+
+3)add this application to the project in settings.py file
+
+4)define view function inside views.py
+
+5)define URL pattern for our view function inside urls.py
+
+6)runserver
+
+python manage.py runserver
+
+7)send request
+
+http://127.0.0.1:8000/hello
