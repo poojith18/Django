@@ -26,3 +26,56 @@ python manage.py runserver
 7)send request
 
 http://127.0.0.1:8000/hello
+
+
+------------------------------------------------------------------------------
+
+Rules:
+
+1)We can have multiple views in single application
+
+2) We can have multiple applications in a single project. But problem in urls.py because of importing views from different
+applications as below(Overriding).
+
+from greetingapp import views
+from timeapp import views
+
+we can solve by using aliasing or explicitly stating as below.
+
+from greetingapp import views as v1
+from timeapp import views as v2
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('greeting/', v1.greetings_view),
+    path('time/', v2.time_info_view),
+]
+
+or
+
+from greetingapp.views import greetings_view
+from timeapp.views import time_info_view
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('greeting/', greetings_view),
+    path('time/', time_info_view),
+]
+
+--------------------------------------------------------------------
+
+Single application can have multiple view functions, let say 100 view functions --> 100 url patterns in (urls.py).
+But ghe bigger problem is urls.py is in project level as application reusability is gping down.
+
+Because if you want to use the same application in other project we can copy that application easily but we also want 
+to search for that project related urls in urls.py for copying  --> Maintainenance is going down and it's tough to check.
+
+so we have to define url patterns at application level instead of project level. we can do this by creating a seperate 
+urls.py file at application level and link it to project level (urls.py).
+
+
+
+
+
+
+
