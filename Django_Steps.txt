@@ -1,3 +1,5 @@
+pip install django
+
 1)start project
 
 django-admin startproject firstproject
@@ -102,6 +104,44 @@ So far projects we discussed:
 3) single application with multiple views
 4) single project with multiple applications
 5) How to define url patterns at application level
+
+-----------------------------------------------------------------------------------------
+MVT --> Model View Template
+
+Till now view part is done.
+
+Now as we have to return compleax html pages instead of single line we need to have template folder so that it can 
+maintain all html files instead of writing html code in python file(urls.py) 
+
+Steps:
+
+1)start project
+2)start application
+3)create templates folder in our main project folder(Inside templates create folders for each application with name same 
+as application name and place all html file related to that application in that folder as each project might contain many
+applications --> Good Programming Practice)
+4)add this application to the project in settings.py file to INSTALLED_APPS and add templates folder path inside 
+settings.py and also update DIRS at TEMPLATES in settings.py
+5)define view function inside views.py
+6)define URL pattern for our view function inside urls.py
+7)runserver
+8)send request
+
+The flow is:
+
+end user --> server -->opens urls.py --> views.py
+(this view send request to template file and get response from it and displays to end user)
+
+-------------------------------------------------------------------------------
+
+Now, we can inject dynamic content from view function to template file by using template tags or template variables.
+
+mydict={'date',dt}
+return render(request,'testapp/results.html',context=mydict)
+
+<h2> The server date and time is : {{date}}</h2>
+
+------------------------------------------------------------------------------------
 
  
 
